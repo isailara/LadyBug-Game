@@ -61,15 +61,29 @@ public class LadyBug extends heroes
         images4[1]= new GreenfootImage("images/arrmov2.png");
         images4[2]= new GreenfootImage("images/arrmov3.png");*/
         //this.ladybug=ladybug;
-        setImage("images/mov2.png");
+        setImage("images/ladybug/mov2.png");
     }
     
     public void act()
     {
         // Add your action code here.
         moveHeroe();
+        checkCollision();
     }
     
+    public void checkCollision(){
+        if(isTouching(LuckyCharm.class)){
+            removeTouching(LuckyCharm.class);
+            Counter counter = (Counter) getWorld().getObjects(Counter.class).get(0);
+            counter.add(5);
+        }
+        if(isTouching(Papas.class)){
+            removeTouching(Papas.class);
+            Counter counter = (Counter) getWorld().getObjects(Counter.class).get(0);
+            counter.add(10);
+        }
+    }
+
     public void moveHeroe()
     {
         counterMovement++;
@@ -104,14 +118,14 @@ public class LadyBug extends heroes
         standingStill=true;
         if(Greenfoot.isKeyDown("UP"))
         {
-            movementLadyBugUp();
+            movementUp();
             offsetX=0;
             offsetY=-OFFSET;
             direction=UP;
             lastButtonPress=1;
             standingStill=false;
         }else if(Greenfoot.isKeyDown("DOWN")){
-            movementLadyBugDown();
+            movementDown();
             offsetX=0;
             offsetY=OFFSET;
             direction=DOWN;
@@ -119,14 +133,14 @@ public class LadyBug extends heroes
             standingStill=false;
         }else if(Greenfoot.isKeyDown("RIGHT"))
         {
-            movementLadyBugLeftRight();
+            movementLeftRight();
             offsetY=0;
             offsetX=OFFSET;
             direction=RIGHT;
             lastButtonPress=3;
             standingStill=false;
         }else if(Greenfoot.isKeyDown("LEFT")){
-            movementLadyBugLeftRight();
+            movementLeftRight();
             getImage().mirrorHorizontally();
             offsetY=0;
             offsetX=-OFFSET;
@@ -137,26 +151,26 @@ public class LadyBug extends heroes
         
         if(standingStill==true){
             if(lastButtonPress==1){
-                setImage("images/abmov2.png");
+                setImage("images/ladybug/abmov2.png");
             }else if(lastButtonPress==2){
-                setImage("images/arrmov2.png");
+                setImage("images/ladybug/arrmov2.png");
             }else if(lastButtonPress==3){
-                setImage("images/mov2.png");
+                setImage("images/ladybug/mov2.png");
             }else if(lastButtonPress==4){
-                setImage("images/mov2.png");
+                setImage("images/ladybug/mov2.png");
                 getImage().mirrorHorizontally();
             }
         }  
     }
     
-    private void movementLadyBugLeftRight()
+    private void movementLeftRight()
     {
         if(frame==0){
-            setImage("images/mov1.png");
+            setImage("images/ladybug/mov1.png");
         }else if(frame==1){
-            setImage("images/mov2.png");
+            setImage("images/ladybug/mov2.png");
         }else if(frame==2){
-            setImage("images/mov3.png");
+            setImage("images/ladybug/mov3.png");
             frame=0;
             return;
         }
@@ -170,14 +184,14 @@ public class LadyBug extends heroes
         }*/
     }
     
-    private void movementLadyBugUp()
+    private void movementUp()
     {
         if(frame==0){
-            setImage("images/abmov1.png");
+            setImage("images/ladybug/abmov1.png");
         }else if(frame==1){
-            setImage("images/abmov2.png");
+            setImage("images/ladybug/abmov2.png");
         }else if(frame==2){
-            setImage("images/abmov3.png");
+            setImage("images/ladybug/abmov3.png");
             frame=0;
             return;
         }
@@ -191,14 +205,14 @@ public class LadyBug extends heroes
         }*/
     }
     
-    private void movementLadyBugDown()
+    private void movementDown()
     {
         if(frame==0){
-            setImage("images/arrmov1.png");
+            setImage("images/ladybug/arrmov1.png");
         }else if(frame==1){
-            setImage("images/arrmov2.png");
+            setImage("images/ladybug/arrmov2.png");
         }else if(frame==2){
-            setImage("images/arrmov3.png");
+            setImage("images/ladybug/arrmov3.png");
             frame=0;
             return;
         }
