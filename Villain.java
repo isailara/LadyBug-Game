@@ -1,6 +1,6 @@
 import greenfoot.*;
 
-public class LuckyCharm extends Item
+public abstract class Villain extends Actor
 {
     public void act()
     {

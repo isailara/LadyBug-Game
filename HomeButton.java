@@ -1,24 +1,8 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class HomeButton here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class HomeButton extends buttons
+public class HomeButton extends Button
 {
-    /**
-     * Act - do whatever the HomeButton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
-        buttonpress();
-    }
-    
-    public void buttonpress(){
+    public void buttonPress(){
         if(Greenfoot.mousePressed(this)){
             getImage().scale((int)Math.round(getImage().getWidth()*0.9),(int)Math.round(getImage().getHeight()*0.9));
         }

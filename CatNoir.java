@@ -1,22 +1,16 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class CatNoir here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class CatNoir extends heroes
+public class CatNoir extends Hero
 {
     private static final int MAX_COUNTER_IMAGE = 10;
     private static final int MAX_COUNTER_MOVEMENT = 3;
     private static final int OFFSET = 10;
-    
+
     private static final int UP = 0;
     private static final int DOWN = 1;
     private static final int RIGHT = 2;
     private static final int LEFT = 3;
-    
+
     private int currentImage;
     private int counterImage;
     private int offsetX=0;
@@ -26,42 +20,36 @@ public class CatNoir extends heroes
     private int frame=0;
     private int lastButtonPress;
     private boolean standingStill;
-    
-    /**
-     * Act - do whatever the CatNoir wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
+
     public CatNoir(){
         setImage("images/catnoir/catmov2.png");
     }
-    
+
     public void act()
     {
-        // Add your action code here.
         moveHeroe();
     }
-    
+
     public void moveHeroe()
     {
         counterMovement++;
-        
+
         if(counterMovement < MAX_COUNTER_MOVEMENT){
             return;
         }
-        
+
         int currentX = getX();
         int currentY = getY();
-        
+
         counterMovement=0;
         handleDirection();
-        
+
         setLocation(currentX + offsetX, currentY+offsetY);
-        
+
         offsetY=0;
         offsetX=0;
     }
-    
+
     private void handleDirection()
     {
         standingStill=true;
@@ -97,7 +85,7 @@ public class CatNoir extends heroes
             lastButtonPress=4;
             standingStill=false;
         }
-        
+
         if(standingStill==true){
             if(lastButtonPress==1){
                 setImage("images/catnoir/catabmov2.png");
@@ -111,7 +99,7 @@ public class CatNoir extends heroes
             }
         }  
     }
-    
+
     private void movementLeftRight()
     {
         if(frame==0){
@@ -125,7 +113,7 @@ public class CatNoir extends heroes
         }
         frame++;
     }
-    
+
     private void movementUp()
     {
         if(frame==0){
@@ -139,7 +127,7 @@ public class CatNoir extends heroes
         }
         frame++;
     }
-    
+
     private void movementDown()
     {
         if(frame==0){

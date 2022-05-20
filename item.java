@@ -1,12 +1,6 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class item here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class item extends Actor
+public class Item extends Actor
 {
     /**
      * Act - do whatever the item wants to do. This method is called whenever

@@ -1,59 +1,97 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class MyWorld here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Level1 extends World
 {
-    private static final int WIDTH_WALL=50;
-    private static final int HEIGHT_WALL=60;
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
+    private static final int WIDTH_WALL=28;
+    private static final int HEIGHT_WALL=28;
+    private static final int HEIGHT_LUCKYCHARM=60;
+
     public Level1()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
         prepare();
     }
     
     public void prepare()
     {
-        //Greenfoot.playSound("MiraculousLadybug.mp3");
-        /*RenaRouge renarouge = new RenaRouge();
-        addObject(renarouge,50,150);
-
-        CatNoir catnoir = new CatNoir();
-        addObject(catnoir,50,100);*/
-
         LadyBug ladybug = new LadyBug();
 
-        addObject(ladybug,50,50);
+        addObject(ladybug,30,30);
 
-        for(int x=100;x<550;x+=HEIGHT_WALL)
+        Wall wall = new Wall();
+        
+        for(int y=0;y<320;y+=HEIGHT_WALL)
         {
-            for(int y=70;y<360;y+=WIDTH_WALL)
-            {      
-                LuckyCharm luckyCharm = new LuckyCharm();
-                addObject(luckyCharm,x,y);
-            }
+            wall = new Wall();
+            addObject(wall,70,y);
+            wall = new Wall();
+            addObject(wall,230,y);
+            wall = new Wall();
+            addObject(wall,390,y);
         }
-
-        //LuckyCharm luckyCharm = new LuckyCharm();
-        //addObject(luckyCharm,101,50);
-        //Counter counter = new Counter();
-        //addObject(score,537,26);
+        
+        for(int y=80;y<450;y+=HEIGHT_WALL)
+        {
+            wall = new Wall();
+            addObject(wall,150,y);
+            wall = new Wall();
+            addObject(wall,310,y);
+        }
+        
+        for(int y=0;y<200;y+=HEIGHT_WALL)
+        {
+            wall = new Wall();
+            addObject(wall,470,y);
+        }
+        
+        for(int y=0;y<150;y+=HEIGHT_WALL)
+        {
+            wall = new Wall();
+            addObject(wall,550,y);
+        }
+ 
+        
+        for(int y=300;y<450;y+=HEIGHT_WALL)
+        {
+            wall = new Wall();
+            addObject(wall,470,y);
+        }
+        
+        for(int y=250;y<450;y+=HEIGHT_WALL)
+        {
+            wall = new Wall();
+            addObject(wall,550,y);
+        }
+        
         Counter counter = new Counter("Score : ");
         addObject(counter,536,30);
-        Papas papas = new Papas();
-        addObject(papas,47,170);
         
-        if(counter.getValue() == 50){
-            Greenfoot.setWorld(new LevelCompletedPage());
+        LuckyCharm luckyCharm = new LuckyCharm();
+        
+        for(int y=85;y<380;y+=HEIGHT_LUCKYCHARM)
+        {
+            luckyCharm = new LuckyCharm();
+            addObject(luckyCharm,30,y);
+            luckyCharm = new LuckyCharm();
+            addObject(luckyCharm,190,y);
+            luckyCharm = new LuckyCharm();
+            addObject(luckyCharm,350,y);
+        }
+        
+        for(int y=30;y<380;y+=HEIGHT_LUCKYCHARM)
+        {
+            luckyCharm = new LuckyCharm();
+            addObject(luckyCharm,110,y+20);
+            luckyCharm = new LuckyCharm();
+            addObject(luckyCharm,270,y+20);
+            luckyCharm = new LuckyCharm();
+            addObject(luckyCharm,430,y+20);
+        }
+        
+        for(int y=45;y<380;y+=HEIGHT_LUCKYCHARM)
+        {
+            luckyCharm = new LuckyCharm();
+            addObject(luckyCharm,510,y+20);
         }
     }
 }

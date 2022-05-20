@@ -1,12 +1,6 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class LadyBug here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class LadyBug extends heroes
+public class LadyBug extends Hero
 {
     private static final int MAX_COUNTER_IMAGE = 10;
     private static final int MAX_COUNTER_MOVEMENT = 3;
@@ -26,47 +20,14 @@ public class LadyBug extends heroes
     private int frame=0;
     private int lastButtonPress;
     private boolean standingStill;
-    
-    //private LadyBug ladybug;
-    
-    /*private GreenfootImage []images;
-    private GreenfootImage []images2;
-    private GreenfootImage []images3;
-    private GreenfootImage []images4;*/
-    
-    /**
-     * Act - do whatever the LadyBug wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
+
     public LadyBug()
     {
-        /*images = new GreenfootImage[3];
-        images[0]= new GreenfootImage("images/mov1.png");
-        images[1]= new GreenfootImage("images/mov2.png");
-        images[2]= new GreenfootImage("images/mov3.png");
-        
-        images2 = new GreenfootImage[3];
-        images2[0]= new GreenfootImage("images/mov1a.png");
-        images2[1]= new GreenfootImage("images/mov2a.png");
-        images2[2]= new GreenfootImage("images/mov3a.png");
-            
-        images3 = new GreenfootImage[3];
-        images3[0]= new GreenfootImage("images/abmov1.png");
-        images3[1]= new GreenfootImage("images/abmov2.png");
-        images3[2]= new GreenfootImage("images/abmov3.png");
-        
-        images4 = new GreenfootImage[3];
-        images4[0]= new GreenfootImage("images/arrmov1.png");
-        images4[1]= new GreenfootImage("images/arrmov2.png");
-        images4[2]= new GreenfootImage("images/arrmov3.png");*/
-        //this.ladybug=ladybug;
         setImage("images/ladybug/mov2.png");
     }
     
     public void act()
     {
-        // Add your action code here.
         moveHeroe();
         checkCollision();
     }
@@ -77,8 +38,8 @@ public class LadyBug extends heroes
             Counter counter = (Counter) getWorld().getObjects(Counter.class).get(0);
             counter.add(5);
         }
-        if(isTouching(Papas.class)){
-            removeTouching(Papas.class);
+        if(isTouching(Papa.class)){
+            removeTouching(Papa.class);
             Counter counter = (Counter) getWorld().getObjects(Counter.class).get(0);
             counter.add(10);
         }
@@ -103,15 +64,12 @@ public class LadyBug extends heroes
         offsetY=0;
         offsetX=0;
         
-        //setLocation(currentX + offsetX, currentY+offsetY);
-        
-        /*Actor wall = getWallOnTheWay();
-        
-        if(wall==null)
-        {
+        Actor wall = getOneIntersectingObject(Wall.class);
+        if(wall!=null){
             setLocation(currentX + offsetX, currentY+offsetY);
-        }*/
+        }
     }
+    
     
     private void handleDirection()
     {
@@ -175,13 +133,6 @@ public class LadyBug extends heroes
             return;
         }
         frame++;
-        /*counterImage++;
-        if(counterImage==MAX_COUNTER_IMAGE)
-        {
-            counterImage=0;
-            setImage(images[currentImage]);
-            currentImage = (currentImage+1)%images.length;
-        }*/
     }
     
     private void movementUp()
@@ -196,13 +147,6 @@ public class LadyBug extends heroes
             return;
         }
         frame++;
-        /*counterImage++;
-        if(counterImage==MAX_COUNTER_IMAGE)
-        {
-            counterImage=0;
-            setImage(images3[currentImage]);
-            currentImage = (currentImage+1)%images3.length;
-        }*/
     }
     
     private void movementDown()
@@ -217,12 +161,5 @@ public class LadyBug extends heroes
             return;
         }
         frame++;
-        /*counterImage++;
-        if(counterImage==MAX_COUNTER_IMAGE)
-        {
-            counterImage=0;
-            setImage(images4[currentImage]);
-            currentImage = (currentImage+1)%images4.length;
-        }*/
     }
 }

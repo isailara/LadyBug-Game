@@ -1,12 +1,6 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class Papas here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Papas extends item
+public class Papa extends Item
 {
     /**
      * Act - do whatever the Papas wants to do. This method is called whenever

@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=LadyBug
+comment1.params=
+comment1.target=LadyBug()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ checkCollision()
+comment4.params=
+comment4.target=void\ moveHeroe()
+comment5.params=
+comment5.target=void\ handleDirection()
+comment6.params=
+comment6.target=void\ movementLeftRight()
+comment7.params=
+comment7.target=void\ movementUp()
+comment8.params=
+comment8.target=void\ movementDown()
+numComments=9
