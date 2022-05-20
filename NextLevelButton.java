@@ -25,7 +25,7 @@ public class NextLevelButton extends buttons
         
         if(Greenfoot.mouseClicked(this)){
             Greenfoot.delay(10);
-            Greenfoot.setWorld(new Level1());
+            Greenfoot.setWorld(new multiversal_space());
         }
     }
 }

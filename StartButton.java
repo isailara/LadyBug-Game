@@ -12,6 +12,12 @@ public class StartButton extends buttons
      * Act - do whatever the StartButton wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private int level;
+    
+    public StartButton (int level)
+    {
+        this.level = level;
+    }
     public void act()
     {
         // Add your action code here.
@@ -25,7 +31,13 @@ public class StartButton extends buttons
         
         if(Greenfoot.mouseClicked(this)){
             Greenfoot.delay(10);
-            Greenfoot.setWorld(new Level1());
+            
+            if(level==1){
+                Greenfoot.setWorld(new Level1());
+            }if(level==2){
+                Greenfoot.setWorld(new Level2());
+            }
+            
         }
     }
 }
