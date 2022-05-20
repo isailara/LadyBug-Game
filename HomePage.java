@@ -25,7 +25,7 @@ public class HomePage extends World
         MiraculousLogo ml = new MiraculousLogo();
         addObject(ml,350,200);
         
-        StartButton startbutton = new StartButton();
+        StartButton startbutton = new StartButton(1);
         addObject(startbutton,170,250);
         //startButton.setLocation(174,321);
         //startButton.setLocation(172,322);

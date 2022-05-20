@@ -28,9 +28,9 @@ public class LevelCompletedPage extends World
     {
         LevelCompleted levelCompleted = new LevelCompleted();
         addObject(levelCompleted,288,150);
-        StartButton startButton = new StartButton();
+        /*StartButton startButton = new StartButton();
         addObject(startButton,419,305);
-        removeObject(startButton);
+        removeObject(startButton);*/
         RestartButton restartButton = new RestartButton();
         addObject(restartButton,122,303);
         NextLevelButton nextLevel = new NextLevelButton();
