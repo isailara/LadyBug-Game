@@ -11,6 +11,7 @@ public class Level3 extends World
     private void prepare()
     {
         RenaRouge renaRouge = new RenaRouge();
-        addObject(renaRouge,75,195);
+        addObject(renaRouge,91,77);
+        renaRouge.setLocation(145,73);
     }
 }
