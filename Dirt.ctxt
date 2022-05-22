@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Dirt
+comment1.params=
+comment1.target=void\ act()
+comment2.params=world
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=pX\ pY
+comment3.target=Dirt(int,\ int)
+numComments=4
