@@ -38,8 +38,8 @@ public class LadyBug extends Hero
             Counter counter = (Counter) getWorld().getObjects(Counter.class).get(0);
             counter.add(5);
         }
-        if(isTouching(Papa.class)){
-            removeTouching(Papa.class);
+        if(isTouching(Lechuga.class)){
+            removeTouching(Lechuga.class);
             Counter counter = (Counter) getWorld().getObjects(Counter.class).get(0);
             counter.add(10);
         }
