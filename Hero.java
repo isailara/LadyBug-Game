@@ -9,3 +9,5 @@ public abstract class Hero extends Actor
     
     public abstract void moveHeroe();
 }
+
+

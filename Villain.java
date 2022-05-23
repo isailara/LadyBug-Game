@@ -1,6 +1,6 @@
-import greenfoot.*;
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public abstract class Villain extends Actor
+public class Villain extends Actor
 {
     public void act()
     {

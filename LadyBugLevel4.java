@@ -38,15 +38,11 @@ public class LadyBugLevel4 extends Hero
     }
     
     public void checkCollision(){
-        if(isTouching(LuckyCharm.class)){
-            removeTouching(LuckyCharm.class);
-            Counter counter = (Counter) getWorld().getObjects(Counter.class).get(0);
-            counter.add(5);
-        }
-        if(isTouching(Papa.class)){
-            removeTouching(Papa.class);
-            Counter counter = (Counter) getWorld().getObjects(Counter.class).get(0);
-            counter.add(10);
+        
+        if(isTouching(hawkmoth1.class)){
+            removeTouching(hawkmoth1.class);
+            getWorld().addObject(new hawkmoth1(),Greenfoot.getRandomNumber(600), getY());
+            Level4.Life.add(-1);
         }
     }
 
@@ -54,6 +50,9 @@ public class LadyBugLevel4 extends Hero
     {
         if(Greenfoot.isKeyDown("up")){
             jump();
+        } 
+        if("space".equals(Greenfoot.getKey())){
+            fire();
         }
         counterMovement++;
         
@@ -90,6 +89,7 @@ public class LadyBugLevel4 extends Hero
             direction=RIGHT;
             lastButtonPress=3;
             standingStill=false;
+           
         }else if(Greenfoot.isKeyDown("LEFT")){
             movementLeftRight();
             getImage().mirrorHorizontally();
@@ -113,7 +113,18 @@ public class LadyBugLevel4 extends Hero
             }
         }  
     }
+    public void fire(){
+        ball ball = new ball();
+        getWorld().addObject(ball, getX(), getY());
+        if(lastButtonPress==3){
+         ball.setRotation(getRotation());   
+        }
+        
+        if(lastButtonPress==4){
+         ball.setRotation(getRotation()-180);   
+        }
     
+    }
     public void jump(){
         speed= -5;
         fall();
