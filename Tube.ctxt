@@ -1,7 +1,7 @@
 #BlueJ class context
-comment0.target=TubeUp
+comment0.target=Tube
 comment1.params=
-comment1.target=TubeUp()
+comment1.target=Tube()
 comment2.params=
 comment2.target=void\ act()
 numComments=3
