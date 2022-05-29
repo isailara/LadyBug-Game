@@ -122,8 +122,8 @@ public class CatNoir extends Hero
     public void checkCollision(){
         if(isTouching(LuckyCharmForLevel2.class)){
             removeTouching(LuckyCharmForLevel2.class);
-            Counter counter = (Counter) getWorld().getObjects(Counter.class).get(0);
-            counter.add(5);
+            Counter score = (Counter) getWorld().getObjects(Counter.class).get(0);
+            score.add(5);
         }
     }
     
