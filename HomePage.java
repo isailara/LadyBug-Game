@@ -9,7 +9,8 @@ public class HomePage extends World
     }
     
     public void prepare(){
-        //TODO: add music Greenfoot.playSound("MiraculousLadybug.mp3");
+        //TODO: add music 
+        //Greenfoot.playSound("MiraculousLadybug.mp3");
         MiraculousLogo ml = new MiraculousLogo();
         addObject(ml,350,200);
 

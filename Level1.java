@@ -2,9 +2,17 @@ import greenfoot.*;
 
 public class Level1 extends World
 {
+    private Counter score = new Counter("Score : ");
     private static final int WIDTH_WALL=28;
     private static final int HEIGHT_WALL=28;
-    private static final int HEIGHT_LUCKYCHARM=60;
+    private static final int HEIGHT_LUCKYCHARM=55;
+    private static final int WIDTH_LUCKYCHARM=160;
+    
+    public void act(){
+        if(score.getValue()==250){
+            Greenfoot.setWorld(new End_Level1());
+        }
+    }
 
     public Level1()
     {    
@@ -14,12 +22,12 @@ public class Level1 extends World
     
     public void prepare()
     {
-        LadyBug ladybug = new LadyBug();
+        LadyBug ladyBug = new LadyBug();
 
-        addObject(ladybug,30,30);
+        addObject(ladyBug,30,30);
 
         Wall wall = new Wall();
-        
+
         for(int y=0;y<320;y+=HEIGHT_WALL)
         {
             wall = new Wall();
@@ -29,7 +37,7 @@ public class Level1 extends World
             wall = new Wall();
             addObject(wall,390,y);
         }
-        
+
         for(int y=80;y<450;y+=HEIGHT_WALL)
         {
             wall = new Wall();
@@ -37,37 +45,35 @@ public class Level1 extends World
             wall = new Wall();
             addObject(wall,310,y);
         }
-        
+
         for(int y=0;y<200;y+=HEIGHT_WALL)
         {
             wall = new Wall();
             addObject(wall,470,y);
         }
-        
+
         for(int y=0;y<150;y+=HEIGHT_WALL)
         {
             wall = new Wall();
             addObject(wall,550,y);
         }
- 
-        
+
         for(int y=300;y<450;y+=HEIGHT_WALL)
         {
             wall = new Wall();
             addObject(wall,470,y);
         }
-        
+
         for(int y=250;y<450;y+=HEIGHT_WALL)
         {
             wall = new Wall();
             addObject(wall,550,y);
         }
-        
-        Counter counter = new Counter("Score : ");
-        addObject(counter,536,30);
-        
+
+        addObject(score,536,30);
+
         LuckyCharm luckyCharm = new LuckyCharm();
-        
+
         for(int y=85;y<380;y+=HEIGHT_LUCKYCHARM)
         {
             luckyCharm = new LuckyCharm();
@@ -77,8 +83,8 @@ public class Level1 extends World
             luckyCharm = new LuckyCharm();
             addObject(luckyCharm,350,y);
         }
-        
-        for(int y=30;y<380;y+=HEIGHT_LUCKYCHARM)
+
+        for(int y=10;y<390;y+=HEIGHT_LUCKYCHARM)
         {
             luckyCharm = new LuckyCharm();
             addObject(luckyCharm,110,y+20);
@@ -87,11 +93,20 @@ public class Level1 extends World
             luckyCharm = new LuckyCharm();
             addObject(luckyCharm,430,y+20);
         }
-        
-        for(int y=45;y<380;y+=HEIGHT_LUCKYCHARM)
+
+        for(int x=70;x<400;x+=WIDTH_LUCKYCHARM)
         {
             luckyCharm = new LuckyCharm();
-            addObject(luckyCharm,510,y+20);
+            addObject(luckyCharm,x,361);
         }
+        
+        for(int y=85;y<390;y+=HEIGHT_LUCKYCHARM)
+        {
+            luckyCharm = new LuckyCharm();
+            addObject(luckyCharm,510,y);
+        }
+
+        Lechuga lechuga = new Lechuga();
+        addObject(lechuga,561,197);
     }
 }

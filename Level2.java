@@ -7,7 +7,7 @@ public class Level2 extends World
     private int counterLuckyCharm = 0;
     private int difCounter = 1;
     private int dirtCounter = 0;
-    private Counter counter = new Counter("Score : ");
+    private Counter score = new Counter("Score : ");
     private int worldSpeed = 45;
     private int rand;
     static public int difficulty = 0;
@@ -54,7 +54,7 @@ public class Level2 extends World
                 difficulty=7;
             }
             difCounter=0;
-        }if(counter.getValue()==200){
+        }if(score.getValue()==200){
             Greenfoot.setWorld(new End_Level2());
         }
     }
@@ -64,7 +64,7 @@ public class Level2 extends World
         super(600, 400, 1);
         prepare();
         addObject(new CatNoir(), 120, 300);
-        addObject(counter, 550, 30);
+        addObject(score,536,30);
         addObject(new Dirt(550, 318), 560, 318);
         addObject(new Dirt(500, 318), 560, 318);
         addObject(new Dirt(450, 318), 560, 318);
