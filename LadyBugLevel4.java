@@ -1,16 +1,17 @@
 import greenfoot.*;
 
-public class LadyBug extends Hero
+public class LadyBugLevel4 extends Hero
 {
+
     private static final int MAX_COUNTER_IMAGE = 10;
     private static final int MAX_COUNTER_MOVEMENT = 3;
     private static final int OFFSET = 10;
-    
+
     private static final int UP = 0;
     private static final int DOWN = 1;
     private static final int RIGHT = 2;
     private static final int LEFT = 3;
-    
+
     private int currentImage;
     private int counterImage;
     private int offsetX=0;
@@ -19,100 +20,90 @@ public class LadyBug extends Hero
     private int direction;
     private int frame=0;
     private int lastButtonPress;
+    private int right=3;
+    private int left=4;
     private boolean standingStill;
+    private int speed=0;
+    private int aceleration=2;
 
-    public LadyBug()
+    public LadyBugLevel4()
     {
         setImage("images/ladybug/mov2.png");
     }
-    
+
     public void act()
     {
         moveHeroe();
+        checkFall();
         checkCollision();
+
     }
-    
+
     public void checkCollision(){
-        if(isTouching(LuckyCharm.class)){
-            removeTouching(LuckyCharm.class);
-            Counter score = (Counter) getWorld().getObjects(Counter.class).get(0);
-            score.add(5);
-        }
-        if(isTouching(Lechuga.class)){
-            removeTouching(Lechuga.class);
-            Counter score = (Counter) getWorld().getObjects(Counter.class).get(0);
-            score.add(10);
+
+        if(isTouching(Hawkmoth.class)){
+            removeTouching(Hawkmoth.class);
+            Counter lifeHero = (Counter) getWorld().getObjects(Counter.class).get(0);
+            lifeHero.add(-1);
+            getWorld().addObject(new Hawkmoth(),492,355);
         }
     }
 
     public void moveHeroe()
     {
+        if(Greenfoot.isKeyDown("up")){
+            jump();
+        } 
+        if("space".equals(Greenfoot.getKey())){
+            fire();
+        }
         counterMovement++;
-        
+
         if(counterMovement < MAX_COUNTER_MOVEMENT){
             return;
         }
-        
+
         int currentX = getX();
         int currentY = getY();
-        
+
         counterMovement=0;
         handleDirection();
-        
+
         setLocation(currentX + offsetX, currentY+offsetY);
-        
+
         offsetY=0;
         offsetX=0;
-        
+
         Actor wall = getOneIntersectingObject(Wall.class);
         if(wall!=null){
             setLocation(currentX + offsetX, currentY+offsetY);
         }
     }
-    
-    
+
     private void handleDirection()
     {
         standingStill=true;
-        if(Greenfoot.isKeyDown("UP"))
-        {
-            movementUp();
-            offsetX=0;
-            offsetY=-OFFSET;
-            direction=UP;
-            lastButtonPress=1;
-            standingStill=false;
-        }else if(Greenfoot.isKeyDown("DOWN")){
-            movementDown();
-            offsetX=0;
-            offsetY=OFFSET;
-            direction=DOWN;
-            lastButtonPress=2;
-            standingStill=false;
-        }else if(Greenfoot.isKeyDown("RIGHT"))
+        if(Greenfoot.isKeyDown("RIGHT"))
         {
             movementLeftRight();
             offsetY=0;
             offsetX=OFFSET;
             direction=RIGHT;
-            lastButtonPress=3;
+            lastButtonPress=right;
             standingStill=false;
+
         }else if(Greenfoot.isKeyDown("LEFT")){
             movementLeftRight();
             getImage().mirrorHorizontally();
             offsetY=0;
             offsetX=-OFFSET;
             direction=LEFT;
-            lastButtonPress=4;
+            lastButtonPress=left;
             standingStill=false;
         }
-        
+
         if(standingStill==true){
-            if(lastButtonPress==1){
-                setImage("images/ladybug/abmov2.png");
-            }else if(lastButtonPress==2){
-                setImage("images/ladybug/arrmov2.png");
-            }else if(lastButtonPress==3){
+            if(lastButtonPress==3){
                 setImage("images/ladybug/mov2.png");
             }else if(lastButtonPress==4){
                 setImage("images/ladybug/mov2.png");
@@ -120,7 +111,44 @@ public class LadyBug extends Hero
             }
         }  
     }
-    
+
+    public void fire(){
+        Ball Ball = new Ball();
+        getWorld().addObject(Ball, getX(), getY());
+        if(lastButtonPress==3){
+            Ball.setRotation(getRotation());   
+        }
+
+        if(lastButtonPress==4){
+            Ball.setRotation(getRotation()-180);   
+        }
+
+    }
+
+    public void jump(){
+        speed= -5;
+        fall();
+    }
+
+    public void checkFall(){
+        if(onTheFloor()){
+            speed=0;
+            this.setLocation(getX(),355);
+        }else{
+            fall();
+        }
+    }
+
+    public boolean onTheFloor(){ 
+        Actor floor = getOneIntersectingObject(Floor.class);
+        return floor != null;
+    }
+
+    public void fall(){
+        setLocation ( getX(), getY() + speed);
+        speed = speed + aceleration;
+    }
+
     private void movementLeftRight()
     {
         if(frame==0){
@@ -129,34 +157,6 @@ public class LadyBug extends Hero
             setImage("images/ladybug/mov2.png");
         }else if(frame==2){
             setImage("images/ladybug/mov3.png");
-            frame=0;
-            return;
-        }
-        frame++;
-    }
-    
-    private void movementUp()
-    {
-        if(frame==0){
-            setImage("images/ladybug/abmov1.png");
-        }else if(frame==1){
-            setImage("images/ladybug/abmov2.png");
-        }else if(frame==2){
-            setImage("images/ladybug/abmov3.png");
-            frame=0;
-            return;
-        }
-        frame++;
-    }
-    
-    private void movementDown()
-    {
-        if(frame==0){
-            setImage("images/ladybug/arrmov1.png");
-        }else if(frame==1){
-            setImage("images/ladybug/arrmov2.png");
-        }else if(frame==2){
-            setImage("images/ladybug/arrmov3.png");
             frame=0;
             return;
         }

@@ -2,14 +2,15 @@ import greenfoot.*;
 
 public class Level3 extends World
 {
+    private RenaRouge renaRouge = new RenaRouge();
     private static int WIDTH_PAPA = 300;
-    private Counter counter = new Counter("Score : ");
+    private Counter score = new Counter("Score : ");
     
     public void act(){
-        if(counter.getValue()==50){
-            Greenfoot.stop();
-            //Greenfoot.setWorld(new LevelCompletedPage());
+        if(score.getValue()==50){
+            Greenfoot.setWorld(new End_Level3());
         }
+        touchingTube();
     }
     
     public Level3()
@@ -20,7 +21,6 @@ public class Level3 extends World
 
     private void prepare()
     {
-        RenaRouge renaRouge = new RenaRouge();
         addObject(renaRouge,75,195);
         
         addObject(new Tube(), 300, 150);
@@ -34,6 +34,12 @@ public class Level3 extends World
             addObject(papa,x,Greenfoot.getRandomNumber(250)+50);
         }
         
-        addObject(counter,536,30);
+        addObject(score,536,30);
+    }
+    
+    public void touchingTube(){
+        if(renaRouge.isTouchTube()==true){
+            Greenfoot.setWorld(new GameOverPage(3));
+        }
     }
 }

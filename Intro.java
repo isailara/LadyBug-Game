@@ -15,7 +15,7 @@ public class Intro extends World
     }
     
     public void prepare(){
-        PlayButton playbutton = new PlayButton(15);
+        PlayButton playbutton = new PlayButton("IntroLevel1");
         addObject(playbutton,550,350);
     }
 }

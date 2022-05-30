@@ -2,9 +2,9 @@ import greenfoot.*;
 
 public class PlayButton extends Button
 {
-    private int level;
+    private String level;
     
-    public PlayButton(int level)
+    public PlayButton(String level)
     {    
         super(); 
         this.level = level;
@@ -20,31 +20,34 @@ public class PlayButton extends Button
             Greenfoot.delay(10);
             
             switch(level){
-                case 0:
+                case "HomePage":
                     Greenfoot.setWorld(new HomePage());
                     break;
-                case 15:
+                case "LevelCompletedPage1":
+                    Greenfoot.setWorld(new LevelCompletedPage(1,2));
+                    break;
+                case "IntroLevel1":
                     Greenfoot.setWorld(new Intro_Level1());
                     break;
-                case 1:
+                case"Level1":
                     Greenfoot.setWorld(new Level1());
                     break;
-                case 25:
-                    Greenfoot.setWorld(new Intro_Level2());
+                case "LevelCompletedPage2":
+                    Greenfoot.setWorld(new LevelCompletedPage(2,3));
                     break;
-                case 2:
+                case "Level2":
                     Greenfoot.setWorld(new Level2());
                     break;
-                case 35:
-                    Greenfoot.setWorld(new Intro_Level3());
+                case "LevelCompletedPage3":
+                   Greenfoot.setWorld(new LevelCompletedPage(3,4));
                     break;
-                case 3:
+                case "Level3":
                     Greenfoot.setWorld(new Level3());
                     break;
-                case 45:
-                    Greenfoot.setWorld(new Intro_Level4());
+                case "LevelCompletedPage4":
+                    Greenfoot.setWorld(new LevelCompletedPage(4,0));
                     break;
-                case 4:
+                case "Level4":
                     Greenfoot.setWorld(new Level4());
                     break;
             }
