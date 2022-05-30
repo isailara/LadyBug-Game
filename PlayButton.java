@@ -44,8 +44,8 @@ public class PlayButton extends Button
                 case "Level3":
                     Greenfoot.setWorld(new Level3());
                     break;
-                case "LevelCompletedPage4":
-                    Greenfoot.setWorld(new LevelCompletedPage(4,0));
+                case "FinalPage":
+                    Greenfoot.setWorld(new FinalPage(4));
                     break;
                 case "Level4":
                     Greenfoot.setWorld(new Level4());

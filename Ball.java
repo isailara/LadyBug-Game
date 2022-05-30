@@ -1,6 +1,6 @@
 import greenfoot.*;
 
-public class Ball extends Actor
+public class Ball extends Item
 {
     
     public void act()
