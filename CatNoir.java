@@ -2,143 +2,138 @@ import greenfoot.*;
 
 public class CatNoir extends Hero
 {
-    private static final int MAX_COUNTER_IMAGE = 10;
-    private static final int MAX_COUNTER_MOVEMENT = 3;
-    private static final int OFFSET = 10;
-
-    private static final int UP = 0;
-    private static final int DOWN = 1;
-    private static final int RIGHT = 2;
-    private static final int LEFT = 3;
-
-    private int currentImage;
-    private int counterImage;
-    private int offsetX=0;
-    private int offsetY=0;
-    private int counterMovement;
-    private int direction;
-    private int frame=0;
-    private int lastButtonPress;
-    private boolean standingStill;
-
-    public CatNoir(){
+    private int counter = 0;
+    private int jumpCounter = 0;
+    private int minCounter = 0;
+    private boolean isOnGround = true;
+    private boolean leftFoot = true;
+    private boolean pressingJump = false;
+    private boolean start = true;
+    private boolean pressed;
+    private boolean down;
+    static public boolean alive = true;
+    private int jumpSpeed;
+    
+    public CatNoir()
+    {
         setImage("images/catnoir/catmov2.png");
+        setLocation(120,300);
+        setRotation(270);
     }
-
-    public void act()
+    
+    public void act() 
     {
         moveHeroe();
+        checkCollision();
     }
-
-    public void moveHeroe()
-    {
-        counterMovement++;
-
-        if(counterMovement < MAX_COUNTER_MOVEMENT){
-            return;
-        }
-
-        int currentX = getX();
-        int currentY = getY();
-
-        counterMovement=0;
-        handleDirection();
-
-        setLocation(currentX + offsetX, currentY+offsetY);
-
-        offsetY=0;
-        offsetX=0;
-    }
-
-    private void handleDirection()
-    {
-        standingStill=true;
-        if(Greenfoot.isKeyDown("UP"))
+    
+    public void moveHeroe(){
+        if(start)
         {
-            movementUp();
-            offsetX=0;
-            offsetY=-OFFSET;
-            direction=UP;
-            lastButtonPress=1;
-            standingStill=false;
-        }else if(Greenfoot.isKeyDown("DOWN")){
-            movementDown();
-            offsetX=0;
-            offsetY=OFFSET;
-            direction=DOWN;
-            lastButtonPress=2;
-            standingStill=false;
-        }else if(Greenfoot.isKeyDown("RIGHT"))
-        {
-            movementLeftRight();
-            offsetY=0;
-            offsetX=OFFSET;
-            direction=RIGHT;
-            lastButtonPress=3;
-            standingStill=false;
-        }else if(Greenfoot.isKeyDown("LEFT")){
-            movementLeftRight();
-            getImage().mirrorHorizontally();
-            offsetY=0;
-            offsetX=-OFFSET;
-            direction=LEFT;
-            lastButtonPress=4;
-            standingStill=false;
+            alive=true;
+            start=false;
         }
-
-        if(standingStill==true){
-            if(lastButtonPress==1){
-                setImage("images/catnoir/catabmov2.png");
-            }else if(lastButtonPress==2){
-                setImage("images/catnoir/catarrmov2.png");
-            }else if(lastButtonPress==3){
-                setImage("images/catnoir/catmov2.png");
-            }else if(lastButtonPress==4){
-                setImage("images/catnoir/catmov2.png");
-                getImage().mirrorHorizontally();
+        if (pressed && (Greenfoot.mouseDragEnded(null) || Greenfoot.mouseClicked(null))){
+            pressed = false;
+        }
+        if (!pressed && Greenfoot.mousePressed(null)) {
+            pressed= true;
+        }
+        if(alive)
+        {
+            if(isOnGround)
+            {
+                counter++;
+                jumpCounter=0;
+                minCounter=0;
+                if(counter>=3)
+                {
+                    counter=0;
+                    if(leftFoot)
+                    {
+                        leftFoot=false;
+                    }
+                    else
+                    {
+                        leftFoot=true;
+                    }
+                }
+                    setLocation(120,300);
+                    if(jumpButton() && !pressingJump)
+                    {
+                        move(5);
+                        jumpSpeed = 5;
+                        isOnGround=false;
+                        pressingJump = true;
+                    }
+                    else
+                    {
+                        if(!jumpButton())
+                        {
+                            pressingJump=false;
+                        }
+                        if(leftFoot)
+                        {
+                            setImage("images/catnoir/catmov1.png");
+                        }
+                        else
+                        {
+                            setImage("images/catnoir/catmov3.png");
+                        }
+                    }
             }
-        }  
-    }
-
-    private void movementLeftRight()
-    {
-        if(frame==0){
-            setImage("images/catnoir/catmov1.png");
-        }else if(frame==1){
-            setImage("images/catnoir/catmov2.png");
-        }else if(frame==2){
-            setImage("images/catnoir/catmov3.png");
-            frame=0;
-            return;
+            else
+            {
+                minCounter++;
+                if((pressingJump&&jumpButton() && jumpCounter<=12) || minCounter<8)
+                {
+                    jumpCounter++;
+                    move(6);
+                }
+                else
+                {
+                    jumpCounter = 20;
+                    jumpSpeed--;
+                    move(jumpSpeed);
+                    if(getY()>=295)
+                    {
+                        setLocation(120,300);
+                        isOnGround=true;
+                    }
+                }
+            }
+            if(getOneIntersectingObject(Obstacle.class)!=null)
+            {
+                
+                alive = false;
+            }
+            else
+            {
+                alive=true;
+            }
         }
-        frame++;
-    }
-
-    private void movementUp()
-    {
-        if(frame==0){
-            setImage("images/catnoir/catabmov1.png");
-        }else if(frame==1){
-            setImage("images/catnoir/catabmov2.png");
-        }else if(frame==2){
-            setImage("images/catnoir/catabmov3.png");
-            frame=0;
-            return;
+        else
+        {
+            Greenfoot.setWorld(new GameOverPage(2));
         }
-        frame++;
     }
-
-    private void movementDown()
-    {
-        if(frame==0){
-            setImage("images/catnoir/catarrmov1.png");
-        }else if(frame==1){
-            setImage("images/catnoir/catarrmov2.png");
-        }else if(frame==2){
-            setImage("images/catnoir/catarrmov3.png");
-            frame=0;
-            return;
+    
+    
+    public void checkCollision(){
+        if(isTouching(LuckyCharmForLevel2.class)){
+            removeTouching(LuckyCharmForLevel2.class);
+            Counter score = (Counter) getWorld().getObjects(Counter.class).get(0);
+            score.add(5);
         }
-        frame++;
+    }
+    
+    private boolean jumpButton()
+    {
+        if(Greenfoot.isKeyDown("up")||Greenfoot.isKeyDown("space")||Greenfoot.mousePressed(null))
+        {
+            return true;
+        }
+        if(pressed){return true;}
+        return false;
     }
 }

@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=LevelCompletedPage
-comment1.params=
-comment1.target=LevelCompletedPage()
+comment1.params=levelRestart\ nextLevel
+comment1.target=LevelCompletedPage(int,\ int)
 comment2.params=
 comment2.target=void\ prepare()
 numComments=3

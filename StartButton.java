@@ -9,7 +9,7 @@ public class StartButton extends Button
         
         if(Greenfoot.mouseClicked(this)){
             Greenfoot.delay(10);
-            Greenfoot.setWorld(new MultiversalSpace());
+            Greenfoot.setWorld(new Intro());
         }
     }
 }

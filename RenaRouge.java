@@ -3,8 +3,8 @@ import greenfoot.*;
 public class RenaRouge extends Hero
 {
     private boolean isAlive = true;
-    private double dy=-2;
-    private double gravity=0.5;
+    private double dropSpeedAxisY=-2;
+    private double gravity=0.4;
     private static double SPEED=-2;
 
     public RenaRouge(){
@@ -20,42 +20,34 @@ public class RenaRouge extends Hero
     public void checkCollision(){
         if(isTouching(Papa.class)){
             removeTouching(Papa.class);
-            Counter counter = (Counter) getWorld().getObjects(Counter.class).get(0);
-            counter.add(10);
-        }
-        
-        if(isTouchTube()){
-            isAlive = false;
+            Counter score = (Counter) getWorld().getObjects(Counter.class).get(0);
+            score.add(10);
         }
         
         if(getY()>getWorld().getHeight()){
-            Greenfoot.stop();
-        }
-        
-        if(!isAlive){
-            //Greenfoot.setWorld(new GameOverPage(3));
-            Greenfoot.stop();
+            Greenfoot.setWorld(new GameOverPage(3));
         }
     }
 
     public void moveHeroe(){
-        setLocation(getX(),(int)(getY()+dy));
+        setLocation(getX(),(int)(getY()+dropSpeedAxisY));
         
         if(Greenfoot.isKeyDown("space")){
-            dy=SPEED;
+            dropSpeedAxisY=SPEED;
         }
         
-        dy=dy+gravity;
+        dropSpeedAxisY+=gravity;
     }
 
     public boolean isTouchTube(){
         for(Tube tube : getWorld().getObjects(Tube.class)){
-            if(Math.abs(tube.getX() - getX()) < 60 ){
-                if(Math.abs(tube.getY() + 30 - getY()) > 37){
+            if(Math.abs(tube.getX() - getX()) < 48 ){
+                if(Math.abs(tube.getY() + 30 - getY()) > 60){
                     isAlive = false;
                 }
             }
         }
+
         return !isAlive;
     }
 }
