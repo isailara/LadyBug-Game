@@ -5,7 +5,7 @@ public class End_Level4 extends World
     public End_Level4()
     {    
         super(600, 400, 1); 
-        PlayButton playbutton = new PlayButton("LevelCompletedPage4");
+        PlayButton playbutton = new PlayButton("FinalPage");
         addObject(playbutton,550,350);
     }
 }
