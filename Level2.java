@@ -1,7 +1,8 @@
 import greenfoot.*; 
 import java.time.*;
 
-public class Level2 extends World{
+public class Level2 extends World
+{
     private int localCounter = 0;
     private int counterLuckyCharm = 0;
     private int dirtCounter = 0;
@@ -15,6 +16,7 @@ public class Level2 extends World{
         localCounter++;
         counterLuckyCharm++;
         dirtCounter++;
+
         if(startTime)
         {
             if(localCounter==100)
@@ -47,7 +49,7 @@ public class Level2 extends World{
     }
 
     public Level2()
-    {
+    {    
         super(600, 400, 1);
         prepare();
         addObject(new CatNoir(), 120, 300);
@@ -62,6 +64,7 @@ public class Level2 extends World{
     private void prepare()
     {
         start = Instant.now();
+        
         Sand sand = new Sand();
         addObject(sand,221,360);
         Sand sand2 = new Sand();
