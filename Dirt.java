@@ -5,9 +5,11 @@ public class Dirt extends Item
     private int counter = 0;
     private int x;
     private int y;
+    private CatNoir catNoir = new CatNoir();
+
     public void act()
     {
-        if(CatNoir.alive)
+        if(catNoir.alive)
         {
             counter++;
             move(-6-Level2.difficulty);
@@ -17,6 +19,7 @@ public class Dirt extends Item
             }
         }
     }
+
     protected void addedToWorld(World world)
     {
         setLocation(x,y);
@@ -45,6 +48,7 @@ public class Dirt extends Item
             }
         }
     }
+
     public Dirt(int pX, int pY)
     {
         x=pX;
