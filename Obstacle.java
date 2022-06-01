@@ -27,7 +27,7 @@ public class Obstacle extends Item
                 {
                     setImage("images/Patricio.png");
                 }
-                else if(Greenfoot.getRandomNumber(1)==0)
+                else if(Greenfoot.getRandomNumber(6)==0)
                 {
                     setImage("images/SirenoMan.png");
                 }
@@ -36,7 +36,7 @@ public class Obstacle extends Item
                     setImage("images/Perlita.png");
                 }
             }
-            move(-6-Level2.difficulty);
+            move(-6);
            
             if(isAtEdge())
             {

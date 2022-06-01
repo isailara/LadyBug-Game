@@ -36,11 +36,9 @@ public class LadyBugLevel4 extends Hero
         moveHeroe();
         checkFall();
         checkCollision();
-
     }
 
     public void checkCollision(){
-
         if(isTouching(Hawkmoth.class)){
             removeTouching(Hawkmoth.class);
             Counter lifeHero = (Counter) getWorld().getObjects(Counter.class).get(0);
@@ -108,14 +106,14 @@ public class LadyBugLevel4 extends Hero
     }
 
     public void fire(){
-        Ball ball = new Ball();
-        getWorld().addObject(ball, getX(), getY());
+        LuckyCharmForLevel4 luckyCharm = new LuckyCharmForLevel4();
+        getWorld().addObject(luckyCharm, getX(), getY());
         if(lastButtonPress==3){
-            ball.setRotation(getRotation());   
+            luckyCharm.setRotation(getRotation());   
         }
 
         if(lastButtonPress==4){
-            ball.setRotation(getRotation()-180);   
+            luckyCharm.setRotation(getRotation()-180);   
         }
 
     }

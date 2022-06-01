@@ -1,6 +1,5 @@
 import greenfoot.*;  
 
-
 public class Hawkmoth extends Villain
 {
     private static final int MAX_COUNTER_IMAGE = 10;
@@ -50,8 +49,8 @@ public class Hawkmoth extends Villain
     }
     public void checkCollision(){
         
-        if(isTouching(Ball.class)){
-            removeTouching(Ball.class);
+        if(isTouching(LuckyCharmForLevel4.class)){
+            removeTouching(LuckyCharmForLevel4.class);
             Counter lifevillain = (Counter) getWorld().getObjects(Counter.class).get(1);
             lifevillain.add(-1);
         }

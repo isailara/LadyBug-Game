@@ -4,10 +4,11 @@ public class LuckyCharmForLevel2 extends LuckyCharm
 {
     private boolean start = true;
     private int counter = 0;
-        
+    private CatNoir catNoir = new CatNoir();
+    
     public void act()
     {
-        if(CatNoir.alive)
+        if(catNoir.alive)
         {
             counter++;
             if(start)
@@ -19,7 +20,7 @@ public class LuckyCharmForLevel2 extends LuckyCharm
                     setImage("images/luckycharm.png");
                 }
             }
-            move(-6-Level2.difficulty);
+            move(-6);
            
             if(isAtEdge())
             {

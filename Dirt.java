@@ -12,7 +12,7 @@ public class Dirt extends Item
         if(catNoir.alive)
         {
             counter++;
-            move(-6-Level2.difficulty);
+            move(-6);
             if(isAtEdge())
             {
                 getWorld().removeObject(this);
@@ -23,7 +23,6 @@ public class Dirt extends Item
     protected void addedToWorld(World world)
     {
         setLocation(x,y);
-        int rand = Greenfoot.getRandomNumber(2);
         setImage("images/dirt1.png");
         if(Greenfoot.getRandomNumber(25)==0)
         {
