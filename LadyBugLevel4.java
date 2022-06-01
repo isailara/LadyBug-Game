@@ -2,18 +2,12 @@ import greenfoot.*;
 
 public class LadyBugLevel4 extends Hero
 {
-
-    private static final int MAX_COUNTER_IMAGE = 10;
     private static final int MAX_COUNTER_MOVEMENT = 3;
     private static final int OFFSET = 10;
 
-    private static final int UP = 0;
-    private static final int DOWN = 1;
     private static final int RIGHT = 2;
     private static final int LEFT = 3;
 
-    private int currentImage;
-    private int counterImage;
     private int offsetX=0;
     private int offsetY=0;
     private int counterMovement;

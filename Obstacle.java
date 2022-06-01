@@ -3,13 +3,12 @@ import greenfoot.*;
 public class Obstacle extends Item
 {
     private boolean start = true;
-    private int counter = 0;
+    private CatNoir catNoir = new CatNoir();
     
     public void act()
     {
-        if(CatNoir.alive)
+        if(catNoir.alive)
         {
-            counter++;
             if(start)
             {
                 start = false;
