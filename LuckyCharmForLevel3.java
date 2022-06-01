@@ -1,7 +1,12 @@
 import greenfoot.*;
 
-public class Papa extends Item
+public class LuckyCharmForLevel3 extends LuckyCharm
 {
+    public LuckyCharmForLevel3(){
+        GreenfootImage image = getImage();
+        image.scale(45,45);
+    }
+    
     public void act()
     {
         setLocation(getX() - 1, getY());

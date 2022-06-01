@@ -4,7 +4,7 @@ public class LevelCompletedPage extends World
 {
     private int levelRestart;
     private int nextLevel;
-    
+        
     public LevelCompletedPage(int levelRestart, int nextLevel)
     {    
         super(600, 400, 1); 

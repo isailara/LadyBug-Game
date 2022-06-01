@@ -4,12 +4,11 @@ public class CatNoir extends Hero
 {
     private int counter = 0;
     private int jumpCounter = 0;
-    private int minCounter = 0;
     private boolean isOnGround = true;
     private boolean leftFoot = true;
     private boolean start = true;
-    static public boolean alive = true;
-    private int jumpSpeed;
+    public static boolean alive = true;
+    private int jumpHeight;
 
     public CatNoir()
     {
@@ -36,7 +35,6 @@ public class CatNoir extends Hero
             {
                 counter++;
                 jumpCounter=0;
-                minCounter=0;
                 if(counter>=3)
                 {
                     counter=0;
@@ -49,11 +47,9 @@ public class CatNoir extends Hero
                         leftFoot=true;
                     }
                 }
-                setLocation(120,300);
                 if(jumpButton()) 
                 {
-                    move(5);
-                    jumpSpeed = 5;
+                    jumpHeight = 6;
                     isOnGround=false;
                 }
                 else
@@ -70,8 +66,7 @@ public class CatNoir extends Hero
             }
             else
             {
-                minCounter++;
-                if((jumpButton() && jumpCounter<=12) || minCounter<8)
+                if((jumpButton() && jumpCounter<=12)) 
                 {
                     jumpCounter++;
                     move(6);
@@ -79,8 +74,8 @@ public class CatNoir extends Hero
                 else
                 {
                     jumpCounter = 20;
-                    jumpSpeed--;
-                    move(jumpSpeed);
+                    jumpHeight--;
+                    move(jumpHeight);
                     if(getY()>=295)
                     {
                         setLocation(120,300);
@@ -90,7 +85,6 @@ public class CatNoir extends Hero
             }
             if(getOneIntersectingObject(Obstacle.class)!=null)
             {
-
                 alive = false;
             }
             else

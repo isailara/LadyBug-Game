@@ -3,7 +3,7 @@ import greenfoot.*;
 public class RenaRouge extends Hero
 {
     private double dropSpeedAxisY=-2;
-    private double gravity=0.4;
+    private double gravity=0.5;
     private static double SPEED=-2;
 
     public RenaRouge(){
@@ -17,8 +17,8 @@ public class RenaRouge extends Hero
     }
     
     public void checkCollision(){
-        if(isTouching(Papa.class)){
-            removeTouching(Papa.class);
+        if(isTouching(LuckyCharmForLevel3.class)){
+            removeTouching(LuckyCharmForLevel3.class);
             Counter score = (Counter) getWorld().getObjects(Counter.class).get(0);
             score.add(10);
         }
