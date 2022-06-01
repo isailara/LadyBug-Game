@@ -73,11 +73,6 @@ public class LadyBugLevel4 extends Hero
 
         offsetY=0;
         offsetX=0;
-
-        Actor wall = getOneIntersectingObject(Wall.class);
-        if(wall!=null){
-            setLocation(currentX + offsetX, currentY+offsetY);
-        }
     }
 
     private void handleDirection()
@@ -113,14 +108,14 @@ public class LadyBugLevel4 extends Hero
     }
 
     public void fire(){
-        Ball Ball = new Ball();
-        getWorld().addObject(Ball, getX(), getY());
+        Ball ball = new Ball();
+        getWorld().addObject(ball, getX(), getY());
         if(lastButtonPress==3){
-            Ball.setRotation(getRotation());   
+            ball.setRotation(getRotation());   
         }
 
         if(lastButtonPress==4){
-            Ball.setRotation(getRotation()-180);   
+            ball.setRotation(getRotation()-180);   
         }
 
     }

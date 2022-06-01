@@ -1,4 +1,5 @@
 import greenfoot.*;
+import java.time.*;
 
 public class Level1 extends World
 {
@@ -7,10 +8,15 @@ public class Level1 extends World
     private static final int HEIGHT_WALL=28;
     private static final int HEIGHT_LUCKYCHARM=55;
     private static final int WIDTH_LUCKYCHARM=160;
-    
+    private Instant start;
+    private Instant end;
+    private long timeLevel1;
+
     public void act(){
         if(score.getValue()==250){
-            Greenfoot.setWorld(new End_Level1());
+            end = Instant.now();
+  
+            Greenfoot.setWorld(new End_Level1(start,end));
         }
     }
 
@@ -19,9 +25,11 @@ public class Level1 extends World
         super(600, 400, 1); 
         prepare();
     }
-    
+
     public void prepare()
-    {
+    {   
+        start = Instant.now();
+        
         LadyBug ladyBug = new LadyBug();
 
         addObject(ladyBug,30,30);
@@ -99,7 +107,7 @@ public class Level1 extends World
             luckyCharm = new LuckyCharm();
             addObject(luckyCharm,x,361);
         }
-        
+
         for(int y=85;y<390;y+=HEIGHT_LUCKYCHARM)
         {
             luckyCharm = new LuckyCharm();

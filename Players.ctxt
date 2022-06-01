@@ -1,7 +1,13 @@
 #BlueJ class context
 comment0.target=Players
-comment1.params=userInput
-comment1.target=Players(java.lang.String)
-comment2.params=
-comment2.target=void\ prepare()
-numComments=3
+comment1.params=
+comment1.target=void\ act()
+comment2.params=userInput\ totalTime
+comment2.target=Players(java.lang.String,\ long)
+comment3.params=listaJugador
+comment3.target=void\ guardar(java.util.List)
+comment4.params=
+comment4.target=java.util.List\ leer()
+comment5.params=
+comment5.target=void\ prepare()
+numComments=6

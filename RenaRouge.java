@@ -2,7 +2,6 @@ import greenfoot.*;
 
 public class RenaRouge extends Hero
 {
-    private boolean isAlive = true;
     private double dropSpeedAxisY=-2;
     private double gravity=0.4;
     private static double SPEED=-2;
@@ -43,11 +42,11 @@ public class RenaRouge extends Hero
         for(Tube tube : getWorld().getObjects(Tube.class)){
             if(Math.abs(tube.getX() - getX()) < 48 ){
                 if(Math.abs(tube.getY() + 30 - getY()) > 60){
-                    isAlive = false;
+                    return true;
                 }
             }
         }
 
-        return !isAlive;
+        return false;
     }
 }
