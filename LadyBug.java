@@ -35,13 +35,13 @@ public class LadyBug extends Hero
     public void checkCollision(){
         if(isTouching(LuckyCharm.class)){
             removeTouching(LuckyCharm.class);
-            Counter counter = (Counter) getWorld().getObjects(Counter.class).get(0);
-            counter.add(5);
+            Counter score = (Counter) getWorld().getObjects(Counter.class).get(0);
+            score.add(5);
         }
-        if(isTouching(Papa.class)){
-            removeTouching(Papa.class);
-            Counter counter = (Counter) getWorld().getObjects(Counter.class).get(0);
-            counter.add(10);
+        if(isTouching(Lechuga.class)){
+            removeTouching(Lechuga.class);
+            Counter score = (Counter) getWorld().getObjects(Counter.class).get(0);
+            score.add(10);
         }
     }
 

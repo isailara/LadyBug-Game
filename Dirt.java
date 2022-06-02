@@ -5,22 +5,24 @@ public class Dirt extends Item
     private int counter = 0;
     private int x;
     private int y;
+    private CatNoir catNoir = new CatNoir();
+
     public void act()
     {
-        if(CatNoir.alive)
+        if(catNoir.alive)
         {
             counter++;
-            move(-6-Level2.difficulty);
+            move(-6);
             if(isAtEdge())
             {
                 getWorld().removeObject(this);
             }
         }
     }
+
     protected void addedToWorld(World world)
     {
         setLocation(x,y);
-        int rand = Greenfoot.getRandomNumber(2);
         setImage("images/dirt1.png");
         if(Greenfoot.getRandomNumber(25)==0)
         {
@@ -45,6 +47,7 @@ public class Dirt extends Item
             }
         }
     }
+
     public Dirt(int pX, int pY)
     {
         x=pX;

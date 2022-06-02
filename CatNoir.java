@@ -4,40 +4,30 @@ public class CatNoir extends Hero
 {
     private int counter = 0;
     private int jumpCounter = 0;
-    private int minCounter = 0;
     private boolean isOnGround = true;
     private boolean leftFoot = true;
-    private boolean pressingJump = false;
     private boolean start = true;
-    private boolean pressed;
-    private boolean down;
-    static public boolean alive = true;
-    private int jumpSpeed;
-    
+    public static boolean alive = true;
+    private int jumpHeight;
+
     public CatNoir()
     {
         setImage("images/catnoir/catmov2.png");
         setLocation(120,300);
         setRotation(270);
     }
-    
+
     public void act() 
     {
         moveHeroe();
         checkCollision();
     }
-    
+
     public void moveHeroe(){
         if(start)
         {
             alive=true;
             start=false;
-        }
-        if (pressed && (Greenfoot.mouseDragEnded(null) || Greenfoot.mouseClicked(null))){
-            pressed = false;
-        }
-        if (!pressed && Greenfoot.mousePressed(null)) {
-            pressed= true;
         }
         if(alive)
         {
@@ -45,7 +35,6 @@ public class CatNoir extends Hero
             {
                 counter++;
                 jumpCounter=0;
-                minCounter=0;
                 if(counter>=3)
                 {
                     counter=0;
@@ -58,43 +47,35 @@ public class CatNoir extends Hero
                         leftFoot=true;
                     }
                 }
-                    setLocation(120,300);
-                    if(jumpButton() && !pressingJump)
+                if(jumpButton()) 
+                {
+                    jumpHeight = 7;
+                    isOnGround=false;
+                }
+                else
+                {
+                    if(leftFoot)
                     {
-                        move(5);
-                        jumpSpeed = 5;
-                        isOnGround=false;
-                        pressingJump = true;
+                        setImage("images/catnoir/catmov1.png");
                     }
                     else
                     {
-                        if(!jumpButton())
-                        {
-                            pressingJump=false;
-                        }
-                        if(leftFoot)
-                        {
-                            setImage("images/catnoir/catmov1.png");
-                        }
-                        else
-                        {
-                            setImage("images/catnoir/catmov3.png");
-                        }
+                        setImage("images/catnoir/catmov3.png");
                     }
+                }
             }
             else
             {
-                minCounter++;
-                if((pressingJump&&jumpButton() && jumpCounter<=12) || minCounter<8)
+                if((jumpButton() && jumpCounter<=12)) 
                 {
                     jumpCounter++;
-                    move(6);
+                    move(7);
                 }
                 else
                 {
                     jumpCounter = 20;
-                    jumpSpeed--;
-                    move(jumpSpeed);
+                    jumpHeight--;
+                    move(jumpHeight);
                     if(getY()>=295)
                     {
                         setLocation(120,300);
@@ -104,7 +85,6 @@ public class CatNoir extends Hero
             }
             if(getOneIntersectingObject(Obstacle.class)!=null)
             {
-                
                 alive = false;
             }
             else
@@ -117,23 +97,21 @@ public class CatNoir extends Hero
             Greenfoot.setWorld(new GameOverPage(2));
         }
     }
-    
-    
+
     public void checkCollision(){
         if(isTouching(LuckyCharmForLevel2.class)){
             removeTouching(LuckyCharmForLevel2.class);
-            Counter counter = (Counter) getWorld().getObjects(Counter.class).get(0);
-            counter.add(5);
+            Counter score = (Counter) getWorld().getObjects(Counter.class).get(0);
+            score.add(10);
         }
     }
-    
+
     private boolean jumpButton()
     {
-        if(Greenfoot.isKeyDown("up")||Greenfoot.isKeyDown("space")||Greenfoot.mousePressed(null))
+        if(Greenfoot.isKeyDown("space")) 
         {
             return true;
         }
-        if(pressed){return true;}
         return false;
     }
 }

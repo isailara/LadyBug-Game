@@ -1,7 +1,8 @@
 import greenfoot.*;
 
-public class TubeUp extends Actor
+public class Lechuga extends Item
 {
+
     public void act()
     {
         // Add your action code here.

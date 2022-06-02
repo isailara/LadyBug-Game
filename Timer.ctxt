@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Timer
+comment1.params=start\ end
+comment1.target=Timer(java.time.Instant,\ java.time.Instant)
+comment2.params=
+comment2.target=long\ calculateTime()
+numComments=3
