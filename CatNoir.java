@@ -49,7 +49,7 @@ public class CatNoir extends Hero
                 }
                 if(jumpButton()) 
                 {
-                    jumpHeight = 6;
+                    jumpHeight = 7;
                     isOnGround=false;
                 }
                 else
@@ -69,7 +69,7 @@ public class CatNoir extends Hero
                 if((jumpButton() && jumpCounter<=12)) 
                 {
                     jumpCounter++;
-                    move(6);
+                    move(7);
                 }
                 else
                 {
